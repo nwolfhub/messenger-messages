@@ -3,7 +3,7 @@ package org.nwolfhub.shared.database;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-import org.nwolfhub.messengerauth.config.DatabaseConfigurator;
+import org.nwolfhub.messengermessages.config.DatabaseConfiguration;
 import org.nwolfhub.shared.database.model.Dao;
 import org.nwolfhub.shared.database.model.User;
 import org.springframework.context.ApplicationContext;
@@ -15,7 +15,7 @@ public class UserDao implements Dao {
     private HibernateController controller;
 
     public UserDao() {
-        ApplicationContext context = new AnnotationConfigApplicationContext(DatabaseConfigurator.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext(DatabaseConfiguration.class);
         //controller = new HibernateController((Properties) context.getBean("hibernateProperties"));
         controller = context.getBean(HibernateController.class);
         try {
