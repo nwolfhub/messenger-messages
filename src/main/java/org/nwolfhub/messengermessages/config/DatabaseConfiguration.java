@@ -26,10 +26,10 @@ public class DatabaseConfiguration {
             in.close();
             return true;
         } catch (FileNotFoundException e) {
-            File f = new File("users.cfg");
+            File f = new File("messages.cfg");
             try {
                 f.createNewFile();
-                System.out.println("Please fill users.cfg");
+                System.out.println("Please fill messages.cfg");
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
