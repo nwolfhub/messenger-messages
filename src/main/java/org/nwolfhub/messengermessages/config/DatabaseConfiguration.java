@@ -1,6 +1,7 @@
 package org.nwolfhub.messengermessages.config;
 
 import org.nwolfhub.messengermessages.Auther;
+import org.nwolfhub.messengermessages.database.KeysDao;
 import org.nwolfhub.shared.Utils;
 import org.nwolfhub.shared.database.HibernateController;
 import org.springframework.context.annotation.Bean;
@@ -94,5 +95,10 @@ public class DatabaseConfiguration {
             e.printStackTrace();
             return null;
         }
+    }
+
+    @Bean("keysDao")
+    public KeysDao keysDao() {
+        return new KeysDao(hibernateController());
     }
 }

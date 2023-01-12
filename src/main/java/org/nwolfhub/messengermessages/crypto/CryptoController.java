@@ -1,8 +1,11 @@
 package org.nwolfhub.messengermessages.crypto;
 
 
+import org.nwolfhub.messengermessages.config.DatabaseConfiguration;
 import org.nwolfhub.messengermessages.crypto.model.Key;
+import org.nwolfhub.messengermessages.database.KeysDao;
 import org.nwolfhub.shared.Utils;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -19,6 +22,7 @@ import java.util.HashMap;
 
 public class CryptoController {
     public static HashMap<String, String> awaiting = new HashMap<>();
+    public static KeysDao dao = (KeysDao) new AnnotationConfigApplicationContext(DatabaseConfiguration.class).getBean("keysDao");
 
     /**
      * acceptKey is called to
@@ -49,5 +53,13 @@ public class CryptoController {
             accepted.setKey(publicKey);
             return accepted;
         } else return null;
+    }
+
+    public static Key getKey(Integer id) {
+        return (Key) dao.get(id);
+    }
+
+    public static Key getKeyByUserId(Integer userId) {
+
     }
 }
