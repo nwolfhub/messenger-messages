@@ -87,7 +87,7 @@ public class DatabaseConfiguration {
         return new Auther.RedisConnectionData().setUseRedis(false);
     }
 
-    @Bean("Auther")
+    @Bean("auther")
     public Auther auther() {
         try {
             return new Auther(redisConnectionData());
